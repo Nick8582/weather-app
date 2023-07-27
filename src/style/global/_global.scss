@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+#app {
+  min-height: 100vh;
+  height: 100%;
+  color: $color-white;
+  background-color: $color-black;
+}
+
+.container {
+  max-width: $container;
+  padding: 0 15px;
+  margin: 0 auto;
+}
