@@ -1,4 +1,4 @@
-# weather-app
+# weather-wiget
 
 ## Project setup
 ```

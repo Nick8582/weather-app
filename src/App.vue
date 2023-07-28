@@ -1,11 +1,15 @@
 <template>
   <TheHeader />
-  <router-view/>
+  <main class="container">
+    <router-view/>
+  </main>
 </template>
 
 <script>
 import TheHeader from '@/components/Header/TheHeader'
-export default {
+import {defineComponent} from "vue";
+
+export default defineComponent({
   components: { TheHeader }
-}
+})
 </script>

@@ -10,6 +10,10 @@
     text-decoration: none;
     font-size: 30px;
     font-weight: 700;
+
+    @media (max-width: 420px) {
+      font-size: 20px;
+    }
   }
 
   &__nav {
@@ -23,14 +27,23 @@
     list-style: none;
     margin: 0;
     padding: 0;
+    @media (max-width: 420px) {
+      flex-direction: column;
+    }
   }
   &__item {
+    display: block;
     &:not(:last-child) {
       margin-right: 20px;
+      @media (max-width: 420px) {
+        margin-right: 0;
+        margin-bottom: 10px;
+      }
     }
   }
 
   &__link {
+    display: block;
     color: $color-white;
     font-weight: bold;
     text-decoration: none;

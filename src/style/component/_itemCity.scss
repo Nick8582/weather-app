@@ -1,0 +1,71 @@
+.itemCity {
+  width: 100%;
+  background: url("../assets/image/gardient-2.jpg") top center no-repeat;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 5px 10px $color-gray;
+
+  &:not(:last-child) {
+    margin-bottom: 20px;
+  }
+
+  &__main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+
+  &__weather {
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: capitalize;
+    margin-bottom: 10px;
+  }
+
+  &__temp {
+    font-size: 32px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+
+    &-icon {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+    }
+
+    &-status {
+      display: flex;
+      flex-direction: column;
+      align-items: end;
+      max-width: 120px;
+      width: 100%;
+    }
+
+    &-after {
+      max-width: 90px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &-min {
+      color: $color-blue;
+    }
+
+    &-max {
+      color: $color-red;
+    }
+  }
+}
