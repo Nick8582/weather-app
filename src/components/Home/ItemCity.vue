@@ -1,24 +1,31 @@
 <template>
-  <li class="itemCity">
+  <li class="itemCity" v-if="itemData != null">
+    <div class="itemCity__header">
+      <button @click.prevent="showFullFunction" class="itemCity__burger">
+        <img src="@/assets/image/burger.svg" class="itemCity__burger-img" alt="Delete">
+      </button>
+      <button @click.prevent="deleteCart()" class="itemCity__delete" title="delete">
+        <img src="@/assets/image/delete.svg" class="itemCity__delete-img" alt="Delete">
+      </button>
+    </div>
     <div class="itemCity__main">
       <div class="itemCity__left">
         <span class="itemCity__title">{{ item.name }}</span>
-        <span class="itemCity__weather">{{ itemWeather.description }}</span>
-        <span>Wind: {{ itemWind.speed }} m/s</span>
+        <span class="itemCity__weather" v-show="showFull" >{{ itemWeather.description }}</span>
+        <span v-show="showFull">Wind: {{ itemWind.speed }} m/s</span>
       </div>
       <div class="itemCity__temp-status">
         <span class="itemCity__temp">
           <img class="itemCity__temp-icon" :src="`https://openweathermap.org/img/wn/${itemWeather.icon}@2x.png`" alt="">
           {{ Math.round(itemTemp.temp) }}°C
         </span>
-        <div class="itemCity__temp-after">
+        <div class="itemCity__temp-after" v-show="showFull">
           <span class="itemCity__temp-min">{{ Math.round(itemTemp.temp_min) }}°C</span> /
           <span class="itemCity__temp-max">{{ Math.round(itemTemp.temp_max) }}°C</span>
         </div>
       </div>
     </div>
   </li>
-  <!--  <Teleport to="#teleport-target" v-if="isShowError">{{ itemDataError }}</Teleport>-->
 </template>
 
 <script>
@@ -34,8 +41,7 @@ export default defineComponent({
   data() {
     return {
       itemData: null,
-      itemDataError: null,
-      isShowError: false
+      showFull: true,
     }
   },
   computed: {
@@ -60,6 +66,13 @@ export default defineComponent({
             localStorage.setItem('city', JSON.stringify(this.$store.state.dataCity))
           })
     },
+    deleteCart() {
+      this.$store.state.dataCity.splice(this.indexOb, 1)
+      localStorage.setItem('city', JSON.stringify(this.$store.state.dataCity))
+    },
+    showFullFunction() {
+      this.showFull = !this.showFull
+    }
   },
   created() {
     this.getWeather()
